@@ -9,4 +9,4 @@ from root import ROOT_DIR
 @pytest.fixture(scope='session')
 def get_config():
     config = load_json(os.path.join(ROOT_DIR, 'config.json'))
-    yield config
+    return config

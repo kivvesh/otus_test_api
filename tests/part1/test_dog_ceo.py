@@ -6,11 +6,34 @@ from core.asserts import Assert
 from core.dump_data import dump_json
 from root import ROOT_DIR
 
+
 @pytest.mark.dog_ceo
 def test_get_breeds_list_all(get_config):
     url = get_config['dog.ceo']['url']
     response = DogCeo.breeds_list_all(url)
-    Assert.assert_status_code(response)
-    Assert.assert_isistance(response.json(), dict)
-    dump_json(os.path.join(ROOT_DIR,'data','list_breeds.json'),response.json()['message'])
+    Assert.assert_status_code(response, 200)
+    Assert.assert_is_istance(response.json(), dict)
+    dump_json(os.path.join(ROOT_DIR, 'data', 'list_breeds.json'), response.json()['message'])
 
+
+@pytest.mark.dog_ceo
+def test_get_breeds_image_random(get_config):
+    url = get_config['dog.ceo']['url']
+    response = DogCeo.breeds_image_random(url)
+    Assert.assert_status_code(response, 200)
+    Assert.assert_in_json(response, 'message')
+
+
+@pytest.mark.dog_ceo
+@pytest.mark.parametrize(
+    'num,len_num,status_code',
+    [
+        (5,5,200),
+        (10,10,200)
+    ]
+)
+def test_breed_hound_images_random(num, len_num, status_code, get_config):
+    url = get_config['dog.ceo']['url']
+    response = DogCeo.breed_hound_images_random(url, num)
+    Assert.assert_status_code(response, status_code)
+    Assert.assert_len_number(response, len_num)
