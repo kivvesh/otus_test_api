@@ -1,5 +1,8 @@
 {
   "dog.ceo": {
     "url": "https://dog.ceo/api/"
+  },
+  "openbrewerydb": {
+    "url": "https://api.openbrewerydb.org/v1/"
   }
 }
