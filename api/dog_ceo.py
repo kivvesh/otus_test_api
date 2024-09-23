@@ -1,26 +1,31 @@
 from core.request import Request
 from requests import Response
+from core.logger import base_logger
 
 
 class DogCeo:
     @staticmethod
     def breeds_list_all(url:str) -> Response:
-        response = Request.get(f'{url}breeds/list/all')
+        endpoint = 'breeds/list/all'
+        response = Request.get(f'{url}{endpoint}')
         return response
 
     @staticmethod
     def breeds_image_random(url:str) -> Response:
-        response = Request.get(f'{url}breeds/image/random')
+        endpoint = 'breeds/image/random'
+        response = Request.get(f'{url}{endpoint}')
         return response
 
     @staticmethod
     def breed_hound_images_random(url:str, num:int) -> Response:
-        response = Request.get(f'{url}breed/hound/images/random/{num}')
+        endpoint = f'breed/hound/images/random/{num}'
+        response = Request.get(f'{url}{endpoint}')
         return response
 
     @staticmethod
     def breed_hound_image_random(url:str) -> Response:
-        response = Request.get(f'{url}breed/hound/images/random')
+        endpoint = 'breed/hound/images/random'
+        response = Request.get(f'{url}{endpoint}')
         return response
 
     @staticmethod

@@ -1,0 +1,7 @@
+endpoint,count,response
+/posts,100,200
+/comments,500,200
+/albums,100,200
+/photos,5000,200
+/todos,200,200
+/users,10,200

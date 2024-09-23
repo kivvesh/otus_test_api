@@ -1,4 +1,5 @@
 from requests import Response
+from pydantic import ValidationError
 
 
 class Assert:
@@ -7,7 +8,7 @@ class Assert:
         assert response.status_code == code
 
     @staticmethod
-    def assert_is_istance(obj, type_obj):
+    def assert_is_instance(obj, type_obj):
         assert isinstance(obj, type_obj)
 
     @staticmethod
@@ -17,3 +18,14 @@ class Assert:
     @staticmethod
     def assert_len_number(response: Response, num: int):
         assert len(response.json()['message']) == num
+
+    @staticmethod
+    def assert_correct_model(obj: dict, model):
+        try:
+            assert model(**obj)
+        except ValidationError as e:
+            assert model(**obj), e
+
+    @staticmethod
+    def assert_correct_count(response: Response, count:int):
+        assert len(response.json()) == int(count)
