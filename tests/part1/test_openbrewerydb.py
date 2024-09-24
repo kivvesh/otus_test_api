@@ -9,6 +9,7 @@ from models.openbrewerydb import Brewery
 
 
 @pytest.mark.openbrewerydb
+@pytest.mark.smoke
 def test_get_breweries_num(get_config):
     """Test breweries?per_page={per_page}"""
     url = get_config['openbrewerydb']['url']
@@ -24,6 +25,7 @@ def test_get_breweries_num(get_config):
      for i in load_json(os.path.join(ROOT_DIR, 'data', 'outputdata', 'list_breweries.json'))]
 )
 @pytest.mark.openbrewerydb
+@pytest.mark.smoke
 def test_get_breweries_uuid(get_config,uuid,status_code):
     """Test breweries/{_uuid}"""
     url = get_config['openbrewerydb']['url']
@@ -38,6 +40,7 @@ def test_get_breweries_uuid(get_config,uuid,status_code):
      for key, value in obj.items()]
 )
 @pytest.mark.openbrewerydb
+@pytest.mark.smoke
 def test_get_breweries_sort(get_config,key, value, status_code):
     """Test for sorting"""
     url = get_config['openbrewerydb']['url']
@@ -49,6 +52,7 @@ def test_get_breweries_sort(get_config,key, value, status_code):
 
 
 @pytest.mark.openbrewerydb
+@pytest.mark.smoke
 def test_get_breweries_random(get_config):
     """Random response test"""
     url = get_config['openbrewerydb']['url']

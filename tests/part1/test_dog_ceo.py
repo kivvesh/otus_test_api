@@ -8,6 +8,7 @@ from root import ROOT_DIR
 
 
 @pytest.mark.dog_ceo
+@pytest.mark.smoke
 def test_get_breeds_list_all(get_config):
     """Test breeds/list/all"""
     url = get_config['dog.ceo']['url']
@@ -18,6 +19,7 @@ def test_get_breeds_list_all(get_config):
 
 
 @pytest.mark.dog_ceo
+@pytest.mark.smoke
 def test_get_breeds_image_random(get_config):
     """Test breeds/image/random"""
     url = get_config['dog.ceo']['url']
@@ -27,6 +29,7 @@ def test_get_breeds_image_random(get_config):
 
 
 @pytest.mark.dog_ceo
+@pytest.mark.smoke
 @pytest.mark.parametrize(
     'num,len_num,status_code',
     [
@@ -43,6 +46,7 @@ def test_breed_hound_images_random(num, len_num, status_code, get_config):
 
 
 @pytest.mark.dog_ceo
+@pytest.mark.smoke
 @pytest.mark.parametrize(
     'get_data_dog_ceo', range(4), indirect=True,
     ids=[f'index:{index}' for index in range(4)]

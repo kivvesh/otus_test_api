@@ -7,6 +7,10 @@ from root import ROOT_DIR
 from core.logger import base_logger
 
 
+def pytest_addoption(parser):
+    parser.addoption("--url", action="store", default='https://ya.ru', help="URL to test")
+    parser.addoption("--status_code", action="store", default=200, help="Expected status code")
+
 
 @pytest.fixture(scope='session', autouse=True)
 def setup_logger():
@@ -32,3 +36,10 @@ def get_data_dog_ceo(request):
 def get_data_breweries():
     data = load_json(os.path.join(ROOT_DIR, 'data', 'outputdata', 'list_breweries.json'))
     return data
+
+
+@pytest.fixture
+def url_status(request):
+    url = request.config.getoption('--url', default='https://ya.ru')
+    status_code = request.config.getoption('--status_code', default=200)
+    return url, status_code
