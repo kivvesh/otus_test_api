@@ -22,3 +22,4 @@ Run tests `pytest -m smoke` or `pytest tests/part1/`
 ### Part 2
 * tests/part2/test_module.py 
 * run test `pytest tests/part2/test_module.py --url=https://mail.ru --status_code=200`
+
