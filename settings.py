@@ -1,3 +1,3 @@
 BASE_SETTINGS = {
-    'log_level': 'INFO'
+    'log_level': 'DEBUG'
 }

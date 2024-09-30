@@ -5,6 +5,7 @@ import pytest
 from core.load_data import load_json, load_csv
 from root import ROOT_DIR
 from core.logger import base_logger
+from api.gectaro import Gectaro
 
 
 def pytest_addoption(parser):
@@ -43,3 +44,24 @@ def url_status(request):
     url = request.config.getoption('--url', default='https://ya.ru')
     status_code = request.config.getoption('--status_code', default=200)
     return url, status_code
+
+
+@pytest.fixture
+def get_id_project(get_config):
+    return get_config.get('gectaro').get('id_project')
+
+
+@pytest.fixture()
+def get_project_tasks_resource_id(get_config, get_id_project):
+    url = get_config.get('gectaro').get('url')
+    token = get_config.get('gectaro').get('token')
+    response = Gectaro.get_resource_requests(url, token, get_id_project)
+    return [int(resource['project_tasks_resource_id']) for resource in response.json()]
+
+
+@pytest.fixture()
+def get_id_resource(get_config, get_id_project):
+    url = get_config.get('gectaro').get('url')
+    token = get_config.get('gectaro').get('token')
+    response = Gectaro.get_resource_requests(url, token, get_id_project)
+    return [int(resource['id']) for resource in response.json()]
