@@ -65,3 +65,10 @@ def get_id_resource(get_config, get_id_project):
     token = get_config.get('gectaro').get('token')
     response = Gectaro.get_resource_requests(url, token, get_id_project)
     return [int(resource['id']) for resource in response.json()]
+
+@pytest.fixture()
+def get_resource(get_config, get_id_project):
+    url = get_config.get('gectaro').get('url')
+    token = get_config.get('gectaro').get('token')
+    response = Gectaro.get_resource_requests(url, token, get_id_project)
+    return [resource for resource in response.json()]

@@ -58,3 +58,23 @@ class Gectaro:
         endpoint = f'projects/{project_id}/resource-requests/{id}'
         response = Request.get(f'{url}{endpoint}', headers=headers)
         return response
+
+    @staticmethod
+    def put_resource_requests_id(url:str, token:str, project_id:int, id:int, data:dict):
+        headers = {"Authorization": f"Bearer {token}"}
+        endpoint = f'projects/{project_id}/resource-requests/{id}'
+        files = {
+            'project_tasks_resource_id': (None, data['project_tasks_resource_id']),
+            'volume': (None, data['volume']),
+            'cost': (None, data['cost']),
+            'is_over_budget': (None, data['is_over_budget']),
+        }
+        response = Request.put(f'{url}{endpoint}', headers=headers,files=files)
+        return response
+
+    @staticmethod
+    def delete_resource_requests_id(url: str, token: str, project_id: int, id: int):
+        headers = {"Authorization": f"Bearer {token}"}
+        endpoint = f'projects/{project_id}/resource-requests/{id}'
+        response = Request.delete(f'{url}{endpoint}', headers=headers)
+        return response

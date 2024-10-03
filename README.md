@@ -23,3 +23,8 @@ Run tests `pytest -m smoke` or `pytest tests/part1/`
 * tests/part2/test_module.py 
 * run test `pytest tests/part2/test_module.py --url=https://mail.ru --status_code=200`
 
+
+### Part 3
+* Написаны автотесты для endpoint Заявки. Снабжения
+* run test `pytest -m "gectaro and smoke"`
+* [ссылка на обнаруженные баги](https://docs.google.com/document/d/1Wxma57gl7DAq_803h-RpUXWNGiTWJTJGNUJlatQePkI/edit?usp=sharing)
