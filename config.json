@@ -8,5 +8,12 @@
   },
   "jsonplaceholder": {
     "url": "https://jsonplaceholder.typicode.com/"
+  },
+  "gectaro": {
+    "url": "https://api.gectaro.com/v1/",
+    "token": "9Wsx23r7WgwsymhI762v-_rFSnQJTZEW",
+    "project": {"name": "AUTOTEST", "status":  2},
+    "id_company": 7323,
+    "id_project": 90779
   }
 }
